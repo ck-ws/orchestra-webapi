@@ -3,7 +3,10 @@ var debug = require('debug')('orchestra:api:rest:hubs')
 
 app.get('/', function(req, res) {
 	debug('get discovered hubs');
-	res.send(app.get('universe').getDiscoveredHubs());
+	app.get('universe').getDiscoveredHubs()
+		.then(function(hubs) {
+			res.send(hubs);
+		});
 });
 
 app.get('/:uuid/activities', function(req, res) {
@@ -12,12 +15,9 @@ app.get('/:uuid/activities', function(req, res) {
 	var uuid = req.params.uuid
 		, universe = app.get('universe');
 
-	universe.getClientForHubWithUuid(uuid)
-		.then(function(client) {
-			client.getActivities()
-				.then(function(activities) {
-					res.send(activities);
-				});
+	universe.getActivitiesForHubWithUuid(hubUuid)
+		.then(function(activities) {
+			res.send(activities);
 		});
 });
 
@@ -27,10 +27,7 @@ app.get('/:uuid/activities/current', function(req, res) {
 	var uuid = req.params.uuid
 		, universe = app.get('universe');
 
-	universe.getClientForHubWithUuid(uuid)
-		.then(function(client) {
-			return client.getCurrentActivity()
-		})
+	universe.getCurrentActivityForHub(uuid)
 		.then(function(currentActivityId) {
 			res.send({ id: currentActivityId });
 		});
@@ -43,10 +40,7 @@ app.post('/:uuid/activities/:id/on', function(req, res) {
 
 	debug('trigger activity ' + id + ' for hub with uuid ' + req.params.uuid);
 
-	universe.getClientForHubWithUuid(uuid)
-		.then(function(client) {
-			return client.startActivity(id);
-		})
+	universe.startActivityForHub(uuid, id)
 		.then(function() {
 			res.sendStatus(200);
 		});
