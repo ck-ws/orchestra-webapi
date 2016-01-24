@@ -15,7 +15,7 @@ app.get('/:uuid/activities', function(req, res) {
 	var uuid = req.params.uuid
 		, universe = app.get('universe');
 
-	universe.getActivitiesForHubWithUuid(hubUuid)
+	universe.getActivitiesForHubWithUuid(uuid)
 		.then(function(activities) {
 			res.send(activities);
 		});
