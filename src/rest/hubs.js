@@ -46,4 +46,17 @@ app.post('/:uuid/activities/:id/on', function(req, res) {
 		});
 });
 
+app.post('/:uuid/actions/:command', function(req, res) {
+	var uuid = req.params.uuid
+		, command = req.params.command
+		, universe = app.get('universe');
+
+	debug('trigger action ' + command + ' for hub with uuid ' + req.params.uuid);
+
+	universe.executeAction(uuid, command)
+		.then(function() {
+			res.sendStatus(200);
+		});
+});
+
 module.exports = app;
