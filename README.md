@@ -10,10 +10,8 @@ The `orchestra-webapi` module is a pluggable [Express](http://expressjs.com/) ap
 Following code demonstrates how you can attach `orchestra-webapi` to an Express instance.
 
 ```javascript
-var app = require('express')()
-	, webapi = require('orchestra-webapi');
-
+var app = require('express')();
+var webapi = require('./index.js');
 app.use('/api', webapi.restApi);  // attach REST routes
-
-webSocketApi(app.listen(8080));   // Start the HTTP server and attach WebScoket server to it
+webapi.webSocketApi(app.listen(8080));   // Start the HTTP server and attach WebScoket server to it
 ```
