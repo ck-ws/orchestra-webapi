@@ -1,24 +1,24 @@
 {
-  "name": "orchestra-webapi",
-  "version": "0.0.1",
+  "name": "orchestra-webapi-ckws",
+  "version": "0.0.2",
   "description": "REST & WebSockets adapter for orchestra-jsapi.",
   "main": "index.js",
   "author": "Manuel Alabor <manuel@alabor.me>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/swissmanu/orchestra-webapi"
+    "url": "https://github.com/ck-ws/orchestra-webapi"
   },
   "bugs": {
-    "url": "https://github.com/swissmanu/orchestra-webapi/issues"
+    "url": "https://github.com/ck-ws/orchestra-webapi/issues"
   },
-  "homepage": "https://github.com/swissmanu/orchestra-webapi",
+  "homepage": "https://github.com/ck-ws/orchestra-webapi",
   "dependencies": {
     "amp-is-object": "^1.0.1",
     "amp-is-string": "^1.0.1",
     "debug": "^2.1.1",
     "express": "^4.10.6",
-    "orchestra-jsapi": "^0.0.1",
+    "orchestra-jsapi": "^1.2.0",
     "primus": "^2.4.12",
     "q": "^1.1.2",
     "ws": "^0.6.5"
