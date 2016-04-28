@@ -71,4 +71,6 @@ module.exports = function(universe, httpServer) {
 		debug('spark ' + spark.id + ' disconnected');
 		unregisterSpark(spark);
 	});
+
+	return primus;
 };

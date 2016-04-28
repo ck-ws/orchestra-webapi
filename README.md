@@ -12,6 +12,7 @@ Following code demonstrates how you can attach `orchestra-webapi` to an Express 
 ```javascript
 var app = require('express')();
 var webapi = require('./index.js');
-app.use('/api', webapi.restApi);  // attach REST routes
-webapi.webSocketApi(app.listen(8080));   // Start the HTTP server and attach WebScoket server to it
+app.use('/api', webapi.restApi); // attach REST routes
+var server = app.listen(8080); // Start the HTTP server
+var primus = webapi.webSocketApi(server); // attach WebSocket server
 ```
