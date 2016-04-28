@@ -1,6 +1,6 @@
 {
   "name": "orchestra-webapi-ckws",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "REST & WebSockets adapter for orchestra-jsapi.",
   "main": "index.js",
   "author": "Manuel Alabor <manuel@alabor.me>",
